@@ -1,0 +1,26 @@
+%html
+  %head
+    %title Twitter評価設定サンプルページ
+    %meta{:"charset"=>"utf-8"}
+    %script{:src=>"https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"}
+    %script{:src=>"js/base.js"}
+  %body
+    %h1 Twitter評価設定サンプルページ
+
+    %form{:action=>"./search", :method=>"post"}
+      %input{:type=>"input", :name=>"search_word", :value=>@query_string}
+      %input{:type=>"submit", :value=>"検索"}
+
+    %span キーワード
+    %input#keyword{:type=>"text"}
+    %span 設定する評価ポイント
+    %input#point{:type=>"number"}
+    %input#countButton{:type=>"button", :value=>"チェック！", :onclick=>"setColor()"}
+
+    %p#countResult
+
+    %hr
+
+    #content
+      != yield
+

@@ -1,0 +1,10 @@
+%h3 結果一覧
+%h4 キーワード：#{@query_string}
+%table{:border=>1}
+  %tbody
+    - @result.each do |tweet|
+      %tr
+        %td
+          %img{:src=>tweet["profile_image_url"]}
+        %td=tweet["from_user_name"]<<"<br /><hr />"<<"@"<<tweet["from_user"]
+        %td.textBody=tweet["text"]
