@@ -26,10 +26,9 @@ end
 post '/search' do
   query = URI.encode(params["search_word"])
   @search_request = TwitterSearchRequest.new
-  result_text = @search_request.search(query)
-  @result = @search_request.parse_json_text(result_text)["results"]
+  @result = @search_request.search(query)["results"]
 
-  @query_string = params["search_word"]
+  @query_string = params["search_word"] #<< @search_request.get_path
 
   haml :list
 end
