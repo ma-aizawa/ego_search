@@ -12,5 +12,5 @@
             <<"<hr class=\"cellHr\" />" |
             <<"<a href='http://twitter.com/#!/#{tweet['from_user']}' target='_blank'>" |
             <<"@"<<tweet["from_user"]<<"</a>" |
-          %td.textBody=tweet["text"].gsub(/(http\S+)(\s|$)/, '<a href="\1" target="_blank" >\1\2</a>')
+          %td.textBody=tweet["text"].gsub(/(http\S+)(\s|$)/, '<a href="\1" target="_blank" >\1</a>\2')
 
