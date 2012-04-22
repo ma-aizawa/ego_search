@@ -14,31 +14,15 @@ class TwitterSearchRequest
     "q="
   ]
 
-  @http
-  @path
-
-  def get_path()
-    @path
-  end
-
   def search(query)
-    @http = Net::HTTP.new(SEARCH_API_URL, 80)
+    http = Net::HTTP.new(SEARCH_API_URL, 80)
     path = SEARCH_API_PATH + "?" << SEARCH_PARAM_LIST.join("&") << query
-    @path = path
-    refresh_url_result = get_response(path)
+    refresh_url_result = get_response(http, path)
     parse_json_text(refresh_url_result)
-    #new_path = parse_json_text(refresh_url_result)["refresh_url"]
-=begin
-    path = SEARCH_API_PATH + new_path
-
-    @path = path
-
-    parse_json_text(get_response(path))
-=end
   end
 
-  def get_response(path)
-    @http.start{|http|
+  def get_response(http, path)
+    http.start{|http|
       req = Net::HTTP::Get.new(path)
       res = http.request(req).body
     }

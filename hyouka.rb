@@ -28,7 +28,7 @@ post '/search' do
   @search_request = TwitterSearchRequest.new
   @result = @search_request.search(query)["results"]
 
-  @query_string = params["search_word"] #<< @search_request.get_path
+  @query_string = params["search_word"]
 
   haml :list
 end
