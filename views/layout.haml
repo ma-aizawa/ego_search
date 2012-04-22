@@ -1,26 +1,43 @@
-%html
+!!! XML
+!!!
+%html{html_attrs}
   %head
-    %title Twitter評価設定サンプルページ
-    %meta{:"charset"=>"utf-8"}
+    %title Twitter検索 キーワードポイント設定サンプルページ
+    %meta(charset='utf-8')
     %script{:src=>"https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"}
     %script{:src=>"js/base.js"}
+    %link(rel='stylesheet' type='text/css'){:href=>'layout.css'}
   %body
-    %h1 Twitter評価設定サンプルページ
+    / ヘッダー
+    %h2 Twitter検索 キーワードポイント設定サンプルページ
+
+    %h3.msg=@msg
 
     %form{:action=>"./search", :method=>"post"}
       %input{:type=>"input", :name=>"search_word", :value=>@query_string}
       %input{:type=>"submit", :value=>"検索"}
 
-    %span キーワード
+    %span< キーワード
     %input#keyword{:type=>"text"}
-    %span 設定する評価ポイント
+    %span< ポイント
     %input#point{:type=>"number"}
     %input#countButton{:type=>"button", :value=>"チェック！", :onclick=>"setColor()"}
 
     %p#countResult
 
-    %hr
+    / /ヘッダー
+    %hr/
 
     #content
       != yield
+
+
+    / フッター
+    %hr/
+    %footer
+      %p
+        %ul
+          %li 作った人のTwitter：<a href="http://twitter.com/#!/maaizawa" target="_blank">@maaziawa</a>
+          %li 作った人のFacebook：<a href="http://www.facebook.com/aizawa.masahiro" target="_blank">相澤真大</a>
+    / /フッター
 
