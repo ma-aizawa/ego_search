@@ -1,3 +1,5 @@
+var resultSum = 0;
+
 function setColor(){
   var keyword = $('#keyword').val();
 
@@ -8,8 +10,15 @@ function setColor(){
 
   //ポイントを数える
   var count = $('.textBody').text().split(keyword).length - 1;
-  var pointSum = count * $('#point').val();
+  var point = $('#point').val();
+  var pointSum = count * point;
 
-  $('#countResult').text(pointSum + "ポイント");
+  var addHtml = '<b>' + keyword + '</b>:' + pointSum + 'pt     [Hit:' + count + '][Point:' + point + ']<br/>';
+  $('#countResult').html($('#countResult').html() + addHtml);
+
+  //累計の記載
+  resultSum += pointSum;
+  var sumHtml = "<b>累計：" + resultSum + "pt</b>";
+  $('#resultSum').html(sumHtml);
 }
 
