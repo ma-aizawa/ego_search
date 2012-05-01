@@ -1,1 +1,1 @@
-web: bundle exec ruby hyouka.rb -p $PORT
+web: bundle exec ruby ego_search.rb -p $PORT
